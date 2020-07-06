@@ -3,11 +3,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 //to map login action creator into LoginForm
 import { login } from '../redux/reducer';
+/*Date: 29June 2020
+Author: Himani 
+Description: React Router
+To allow navigation to other pages from the home page 
+rather than mentioning the url/path manually*/
 import { Link } from "react-router-dom";
 import { browserHistory } from "react-router";
 import { BeatLoader } from 'react-spinners';
 
-//To make the Login button work we did the below :
+/*Date:29 June 2020 
+Author: Himani
+Description: To make the Login button work along with authentication
+References: https://www.youtube.com/watch?v=MdeqXWo4fOI */
+
 //<button onClick={this.onNavigateDetails} className="btn btn-primary">Login</button>
 /* onNavigateDetails = () => {
         this.props.history.push("/Details")
@@ -28,8 +37,11 @@ import { BeatLoader } from 'react-spinners';
     
 }  */  
 
-//This was added to send the login details to server(server rendering)-onSubmit={submitToServer({ email, password })
-//.then(data => console.log(data))}
+/*Date: 29 June 2020
+Author: Himani
+Description: To send the login details to server(server rendering)
+onSubmit={submitToServer({ email, password })
+.then(data => console.log(data))}*/
 
 class LoginForm extends React.Component {
 
@@ -50,6 +62,15 @@ class LoginForm extends React.Component {
         this.state = {};
 
     }
+    /*Date: 3 July 2020 
+    Author: Himani
+    Description: To give the user as much visual feedback as possible
+    Display a text message after clicking on a link*/
+    onclose = () => {
+        this.setState({visible: false});
+        window.alert("You have logged in successfully.");
+    }
+
     render() {  
         let {email, password} = this.state;
 
@@ -66,9 +87,12 @@ class LoginForm extends React.Component {
                 <br/>
                 <br/>
                  
-                 <input type="submit" value="Login" />
-                 
-                 <Link to="/Details" >Login</Link>
+                 {/*<input type="submit" value="Login" />*/}
+
+                 <button>
+                 <Link to="/Details" onClick={this.onclose}>Login</Link>
+                 </button>
+
                  <BeatLoader color="#26A65B" />
              </form>
         </div>
@@ -91,11 +115,16 @@ const mapStateToProps = (state) => {
     };
 }
 
+const linkstyle = {
+    color: 'white'
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         login: (email, password) => dispatch(login(email, password))
     };
 }
+
 
 //export default LoginForm;
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
