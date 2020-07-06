@@ -7,16 +7,24 @@ import { BeatLoader } from 'react-spinners';
 //Link Tag is used below for redirecting from one page to the another internally
 
 const MainPage  = () => {
+    
     return (
-        <div>
-            <h1>Welcome to Login Page!</h1>
+        <div id="Head">
+            <h1 align="center" border-botton="1px"> WELCOME TO <br/> OPENING DOORS...CLOSING LOANS </h1>
+            <h3>Login Page</h3>
             <LoginForm />
             
             <br/>
-            <Link to="/Details" >Continue as Guest</Link>
+            
+            <Link style={linkstyle} to="/Details" >Continue as Guest</Link>
+            
         </div>
     );
+
 };
 
+const linkstyle = {
+    color: 'white'
+};
 
 export default MainPage;
