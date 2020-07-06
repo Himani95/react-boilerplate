@@ -30,6 +30,10 @@ nav ul li a {
   text-decoration: none;
 }
 
+Head h1 {
+  text-align: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
